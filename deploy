@@ -1,0 +1,5 @@
+#!/bin/sh
+
+mkdir -p $CATALINA_HOME/webapps/project
+cp -r src/main/webapp/* $CATALINA_HOME/webapps/project
+cp -r target/classes $CATALINA_HOME/webapps/project/WEB-INF/
