@@ -13,7 +13,7 @@
     </description>
     <servlet>
         <servlet-name>member</servlet-name>
-        <servlet-class>com.bodejidi.Member</servlet-class>
+        <servlet-class>com.bodejidi.Project</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>member</servlet-name>
