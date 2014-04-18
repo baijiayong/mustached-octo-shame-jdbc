@@ -12,4 +12,12 @@ public class Project extends HttpServlet
     {
         resp.getWriter().println("I am a boy!");
     }
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException
+    {
+        String firstName = req.getParameter("firstName");
+        String lastName = req.getParameter("lastName");
+        
+        resp.getWriter().println(firstName);
+        resp.getWriter().println(lastName);
+    }
 }
