@@ -4,7 +4,7 @@ public class Member
 {
     private String firstName;
     private String lastName;
-    private Ingeger id;
+    private Integer id;
     
     public String getFirstName()
     {
