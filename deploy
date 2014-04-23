@@ -3,3 +3,6 @@
 mkdir -p $CATALINA_HOME/webapps/project
 cp -r src/main/webapp/* $CATALINA_HOME/webapps/project
 cp -r target/classes $CATALINA_HOME/webapps/project/WEB-INF/
+
+cp -r lib $CATALINA_HOME/webapps/project/WEB-INF/
+rm $CATALINA_HOME/webapps/project/WEB-INF/lib/servlet-api.jar
