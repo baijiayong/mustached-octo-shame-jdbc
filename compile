@@ -1,4 +1,4 @@
 #!/bin/sh
 
 mkdir target/classes/
-javac -classpath $CATALINA_HOME/lib/servlet-api.jar -encoding "UTF-8" -d target/classes src/main/java/com/bodejidi/*.java
+javac -classpath lib/servlet-api.jar -encoding "UTF-8" -d target/classes src/main/java/com/bodejidi/*.java
