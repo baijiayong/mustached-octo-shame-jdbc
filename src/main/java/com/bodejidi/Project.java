@@ -16,8 +16,6 @@ public class Project extends HttpServlet
     {
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
-        resp.getWriter().println(firstName);
-        resp.getWriter().println(lastName);
        
         String action = req.getParameter("action");
 
@@ -28,8 +26,11 @@ public class Project extends HttpServlet
             member.setLastName(lastName);
             MemberDao memberDao = new MemberDao();
             memberDao.save(member);
-            System.out.println(member.getFirstName());
-            System.out.println(member.getLastName());
+        }else if ("show".equalsIgnoreCase(action))
+        {
+           MemberDao memberDao = new MemberDao();
+           memberDao.show();
+           
         }
     }
 }
