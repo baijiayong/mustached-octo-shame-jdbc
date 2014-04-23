@@ -1,4 +1,4 @@
 #!/bin/sh
 
-rm -r $CATALINA_HOME/webapps/project
+rm -r -f $CATALINA_HOME/webapps/project
 rm -r target/classes
