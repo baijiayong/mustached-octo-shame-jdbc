@@ -39,12 +39,12 @@ public class MemberDao
     
     public List<Member> show()
     {
-        String sql = "SELECT * FORM member";
+        String sql = "SELECT * FROM member";
         List<Member> memberList = new ArrayList<Member>();
         
         DatabaseManager dbManager = null;
         
-        Member member = new Member();
+       
         
         try
         {
@@ -53,6 +53,7 @@ public class MemberDao
             debug(sql);
             while(rs.next())
             {
+                Member member = new Member();
                 member.setId(rs.getLong("id"));
                 member.setFirstName(rs.getString("first_name"));
                 member.setLastName(rs.getString("last_name"));
