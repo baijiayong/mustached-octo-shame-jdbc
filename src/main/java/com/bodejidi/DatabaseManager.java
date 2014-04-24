@@ -77,6 +77,11 @@ public class DatabaseManager
     {
         return pstmt.executeQuery();
     }
+    public ResultSet executeQuery(String sql) throws SQLException
+    {
+        prepare(sql);
+        return executeQuery();
+    }
     public Boolean execute(String sql,Object... params) throws SQLException
     {
         prepare(sql);
