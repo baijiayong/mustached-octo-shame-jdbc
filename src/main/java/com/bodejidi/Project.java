@@ -18,8 +18,7 @@ public class Project extends HttpServlet
         if ("show".equalsIgnoreCase(action))
         {
            MemberDao memberDao = new MemberDao();
-           memberDao.show();
-           req.setAttribute("member",member);
+           req.setAttribute("memberList",memberDao.show());
            forward("show",req,resp);
         }
     }
@@ -38,6 +37,8 @@ public class Project extends HttpServlet
             member.setLastName(lastName);
             MemberDao memberDao = new MemberDao();
             memberDao.save(member);
+            req.setAttribute("member",member);
+            forward("showAddSuccess", req, resp);
         }
     }
     public void forward(String page, HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException
