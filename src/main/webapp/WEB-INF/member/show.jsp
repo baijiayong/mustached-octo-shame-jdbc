@@ -1,31 +1,32 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charSet=UTF-8"%>
-<%@ page import="java.util.List,com.bodejidi.Member"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.bodejidi.Member"%>
 <%
-List<Member> memberList = (List<Member>) request.getAttribute("memberList");
+Member member = (Member) request.getAttribute("member");
 %>
+
 <html>
     <head>
-        <title>会员列表</title>
+        <title>显示会员</title>
     </head>
     <body>
-        <h1>会员列表</h1>
         <form action="member" method="POST">
-            <table border="1">
+            <h1>显示会员</h1>
+            <table>
                 <tr>
-                    <td>ID</td>
-                    <td>FirstName</td>
-                    <td>LastName</td>
+                    <td>Id:</td>
+                    <td><%=member.getId()%></td>
                 </tr>
-                <c:forEach var="member" items="${memberList}"> 
                 <tr>
-                    <td><a href="?action=show&id=${member.id}">${member.id}</a></td>
-                    <td>${member.firstName}</td>
-                    <td>${member.lastName}</td>
+                    <td>FirstName:</td>
+                    <td><input type="text" name="firstName" value="<%=member.getFirstName()%>"></td>
                 </tr>
-                </c:forEach>
+                <tr>
+                    <td>LastName:</td>
+                    <td><input type="text" name="lastName" value="<%=member.getLastName()%>"></td>
+                </tr>
             </table>
-            <p><a href=".">Add Member</a></p>
+            <input type="submit" name="action" value="Delete"/>
+            <input type="submit" name="action" value="Update"/>
         </form>
     </body>
 </html>
