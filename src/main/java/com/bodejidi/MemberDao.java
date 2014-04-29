@@ -72,6 +72,35 @@ public class MemberDao
         }
         return memberList;
     }
+    public Member show(Member member)
+    {
+        Long id = member.getId();
+
+        String sql = "SELECT * FROM member WHERE id=" + id;
+         
+        DatabaseManager dbManager = null;
+ 
+        try
+        {
+            dbManager = DatabaseManager.newInstance();
+            ResultSet rs = dbManager.executeQuery(sql);
+            debug(sql);
+            rs.next();
+            member.setId(rs.getLong("id"));
+            member.setFirstName(rs.getString("first_name"));
+            member.setLastName(rs.getString("last_name"));
+        }catch(SQLException ex)
+        {
+            debug("SQLException: " + ex.getMessage());
+            debug("SQLState: " + ex.getSQLState());
+            debug("VendorError: " + ex.getErrorCode());
+            debug("Error!");
+        }finally
+        {
+            dbManager.close();
+        }
+        return member;
+    }
     
     public void debug(String str)
     {
