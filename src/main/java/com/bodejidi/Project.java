@@ -18,7 +18,7 @@ public class Project extends HttpServlet
         if ("list".equalsIgnoreCase(action))
         {
            MemberDao memberDao = new MemberDao();
-           req.setAttribute("memberList",memberDao.show());
+           req.setAttribute("memberList",memberDao.list());
            forward("list",req,resp);
         }
     }

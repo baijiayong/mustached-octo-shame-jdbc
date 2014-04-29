@@ -37,7 +37,7 @@ public class MemberDao
         return member;
     }
     
-    public List<Member> show()
+    public List<Member> list()
     {
         String sql = "SELECT * FROM member";
         List<Member> memberList = new ArrayList<Member>();
