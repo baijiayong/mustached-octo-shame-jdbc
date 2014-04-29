@@ -19,12 +19,13 @@ List<Member> memberList = (List<Member>) request.getAttribute("memberList");
                 </tr>
                 <c:forEach var="member" items="${memberList}"> 
                 <tr>
-                    <td>${member.id}</td>
+                    <td><a href="?action=show&id=${member.id}">${member.id}</a></td>
                     <td>${member.firstName}</td>
                     <td>${member.lastName}</td>
                 </tr>
                 </c:forEach>
             </table>
+            <p><a href=".">Add Member</a></p>
         </form>
     </body>
 </html>
