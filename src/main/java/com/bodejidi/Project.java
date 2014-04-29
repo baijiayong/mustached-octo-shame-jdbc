@@ -15,11 +15,11 @@ public class Project extends HttpServlet
         
         Member member = new Member();
         
-        if ("show".equalsIgnoreCase(action))
+        if ("list".equalsIgnoreCase(action))
         {
            MemberDao memberDao = new MemberDao();
            req.setAttribute("memberList",memberDao.show());
-           forward("show",req,resp);
+           forward("list",req,resp);
         }
     }
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException
@@ -40,6 +40,7 @@ public class Project extends HttpServlet
             req.setAttribute("member",member);
             forward("showAddSuccess", req, resp);
         }
+        
     }
     public void forward(String page, HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException
     {

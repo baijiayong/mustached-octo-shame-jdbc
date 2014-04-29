@@ -4,6 +4,6 @@
 <html>
     <body>
         <p>Add <%=member.getFirstName()%><%=member.getLastName()%> Success!</p>
-        <a href="?action=show">Member List</a>
+        <a href="?action=list">Member List</a>
     </body>
 </html>
