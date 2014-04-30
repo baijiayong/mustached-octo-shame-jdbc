@@ -101,6 +101,30 @@ public class MemberDao
         }
         return member;
     }
+    public void delete(Member member)
+    {
+        Long id = member.getId();
+        
+        String sql = "DELETE FROM member WHERE id=" + id;
+        
+        DatabaseManager dbManager = null;
+        
+        try
+        {
+            dbManager = DatabaseManager.newInstance();
+            debug(sql);
+            dbManager.execute(sql);
+        }catch(SQLException ex)
+        {
+            debug("SQLException:" + ex.getMessage());
+            debug("SQLStates:" + ex.getSQLState());
+            debug("VendorError:" + ex.getErrorCode());
+            debug("Error");
+        }finally
+        {
+            dbManager.close();
+        }
+    }
     
     public void debug(String str)
     {
