@@ -25,6 +25,7 @@ Member member = (Member) request.getAttribute("member");
                     <td><input type="text" name="lastName" value="<%=member.getLastName()%>"></td>
                 </tr>
             </table>
+            <input type="hidden" name="id" value="<%=member.getId()%>"/>
             <input type="submit" name="action" value="Delete"/>
             <input type="submit" name="action" value="Update"/>
         </form>
