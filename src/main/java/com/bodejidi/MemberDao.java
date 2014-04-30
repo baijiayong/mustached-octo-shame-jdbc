@@ -125,6 +125,30 @@ public class MemberDao
             dbManager.close();
         }
     }
+    public void update(Member member)
+    {
+        Long id = member.getId();
+        
+        String sql = "UPDATE member SET first_name=?,last_name=? WHERE id=?";
+        
+        DatabaseManager dbManager = null;
+        
+        try
+        {
+            dbManager = DatabaseManager.newInstance();
+            debug(sql);
+            dbManager.execute(sql,member.getFirstName(),member.getLastName(),id);
+        }catch(SQLException ex)
+        {
+            debug("SQLException:" + ex.getMessage());
+            debug("SQLState:"+ ex.getSQLState());
+            debug("VendorError:" +ex.getErrorCode());
+            debug("Error");
+        }finally
+        {
+            dbManager.close();
+        }
+    }
     
     public void debug(String str)
     {
