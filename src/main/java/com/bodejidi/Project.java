@@ -36,7 +36,7 @@ public class Project extends HttpServlet
         
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
-       
+
         String action = req.getParameter("action");
 
         if("add".equalsIgnoreCase(action))
@@ -47,6 +47,15 @@ public class Project extends HttpServlet
             memberDao.save(member);
             req.setAttribute("member",member);
             forward("showAddSuccess", req, resp);
+        }else if("delete".equalsIgnoreCase(action))
+        {
+            Long id = Long.valueOf(req.getParameter("id"));
+            
+            member.setId(id);
+            MemberDao memberDao = new MemberDao();
+            memberDao.delete(member);
+            req.setAttribute("memberId",member);
+            forward("deleteSuccess",req,resp);
         }
         
     }
