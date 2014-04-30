@@ -56,6 +56,17 @@ public class Project extends HttpServlet
             memberDao.delete(member);
             req.setAttribute("memberId",member);
             forward("deleteSuccess",req,resp);
+        }else if("update".equalsIgnoreCase(action))
+        {
+            Long id = Long.valueOf(req.getParameter("id"));
+            member.setFirstName(firstName);
+            member.setLastName(lastName);
+            member.setId(id);
+            
+            MemberDao memberDao = new MemberDao();
+            memberDao.update(member);
+            req.setAttribute("member",member);
+            forward("updateSuccess",req,resp);
         }
         
     }
