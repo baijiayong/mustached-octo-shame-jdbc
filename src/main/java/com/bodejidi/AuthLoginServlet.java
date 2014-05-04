@@ -14,10 +14,11 @@ public class AuthLoginServlet extends HttpServlet
         HttpSession session = req.getSession();
         Long memberId = (Long)session.getAttribute("memberId");
         
-        if(memberId == null)
+        if(null == memberId)
         {
-            login();
+            login(req,resp);
         }
+        resp.getWriter().println("hello");
     }
     public void doPost(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException
     {
@@ -33,6 +34,7 @@ public class AuthLoginServlet extends HttpServlet
         {
             showLoginFailed();
         }
+        
     }
     public void showLoginSuccess()
     {
@@ -42,8 +44,13 @@ public class AuthLoginServlet extends HttpServlet
     {
         
     }
-    public void login()
+    public void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException ,IOException
     {
-    
+        forward("showLoginPage",req,resp);
     }
-}
+    public void forward(String page, HttpServletRequest req, HttpServletResponse resp)throws ServletException,IOException
+    {
+        String jsp = "/WEB-INF/member/" + page + ".jsp";
+        getServletContext().getRequestDispatcher(jsp).forward(req,resp);
+    }
+}      
