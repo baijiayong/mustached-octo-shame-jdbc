@@ -15,8 +15,24 @@
         <servlet-name>member</servlet-name>
         <servlet-class>com.bodejidi.Project</servlet-class>
     </servlet>
+ 
     <servlet-mapping>
         <servlet-name>member</servlet-name>
         <url-pattern>/member</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>auth</servlet-name>
+        <servlet-class>com.bodejidi.AuthLoginServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>auth</servlet-name>
+        <url-pattern>/auth/login</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>auth</servlet-name>
+        <url-pattern>/auth/logout</url-pattern>
     </servlet-mapping>
 </web-app>
