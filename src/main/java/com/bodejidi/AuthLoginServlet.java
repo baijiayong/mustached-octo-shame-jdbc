@@ -13,11 +13,14 @@ public class AuthLoginServlet extends HttpServlet
     {
         HttpSession session = req.getSession();
         Long memberId = (Long)session.getAttribute("memberId");
+        if(req.getRequestURI().endsWith("/logout"))
+        {
+            logout();
+        }
         if(null == memberId)
         {
             login(req,resp);
         }
-        resp.getWriter().println("hello");
     }
     public void doPost(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException
     {
@@ -48,9 +51,14 @@ public class AuthLoginServlet extends HttpServlet
     {
         forward("showLoginPage",req,resp);
     }
+    public void logout()
+    {
+        
+    }
     public void forward(String page, HttpServletRequest req, HttpServletResponse resp)throws ServletException,IOException
     {
         String jsp = "/WEB-INF/member/" + page + ".jsp";
         getServletContext().getRequestDispatcher(jsp).forward(req,resp);
     }
+    
 }      
