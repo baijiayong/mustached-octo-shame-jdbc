@@ -10,6 +10,7 @@ List<Member> memberList = (List<Member>) request.getAttribute("memberList");
     </head>
     <body>
         <h1>会员列表</h1>
+        <%@ include file="logout.jsp"%>
         <form action="member" method="POST">
             <table border="1">
                 <tr>

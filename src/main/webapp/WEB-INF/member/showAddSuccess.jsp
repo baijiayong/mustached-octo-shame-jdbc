@@ -3,7 +3,7 @@
 <% Member member = (Member) request.getAttribute("member");%>
 <html>
     <body>
-        <p>Add <%=member.getFirstName()%><%=member.getLastName()%> Success!</p>
+        <p>Add <%=member.getFirstName()%> <%=member.getLastName()%> Success!</p>
         <a href="?action=list">Member List</a>
     </body>
 </html>

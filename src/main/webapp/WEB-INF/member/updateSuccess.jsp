@@ -10,6 +10,7 @@ Member member = (Member) request.getAttribute("member");
     </head>
     <body>
         <h1>更新会员</h1>
+        <%@ include file="logout.jsp"%>
         <p>Update <%=member.getFirstName()%> <%=member.getLastName()%> Success</p>
         <a href="member?action=list">Member List</a>
     </body>

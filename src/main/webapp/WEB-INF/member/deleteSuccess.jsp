@@ -10,6 +10,7 @@ Member member = (Member) request.getAttribute("memberId");
     </head>
     <body>
         <h1>删除会员</h1>
+        <%@ include file="logout.jsp"%>
         <p>Delete <%=member.getId()%> Success</p>
         <a href="member?action=list">Member List</a>
     </body>
