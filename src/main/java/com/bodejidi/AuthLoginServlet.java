@@ -13,13 +13,18 @@ public class AuthLoginServlet extends HttpServlet
     {
         HttpSession session = req.getSession();
         Long memberId = (Long)session.getAttribute("memberId");
+        
         if(req.getRequestURI().endsWith("/logout"))
         {
             logout(req, resp);
+            return;
         }
         if(null == memberId)
         {
             login(req,resp);
+        }else
+        {
+            resp.sendRedirect(req.getContextPath());
         }
     }
     public void doPost(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException
