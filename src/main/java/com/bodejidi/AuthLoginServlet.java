@@ -15,7 +15,7 @@ public class AuthLoginServlet extends HttpServlet
         Long memberId = (Long)session.getAttribute("memberId");
         if(req.getRequestURI().endsWith("/logout"))
         {
-            logout();
+            logout(req, resp);
         }
         if(null == memberId)
         {
@@ -51,9 +51,11 @@ public class AuthLoginServlet extends HttpServlet
     {
         forward("showLoginPage",req,resp);
     }
-    public void logout()
-    {
-        
+    public void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+    {   
+        HttpSession session = req.getSession();
+        session.removeAttribute("memberId");
+        login(req,resp);
     }
     public void forward(String page, HttpServletRequest req, HttpServletResponse resp)throws ServletException,IOException
     {
