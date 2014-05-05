@@ -11,6 +11,7 @@ Member member = (Member) request.getAttribute("member");
     <body>
         <form action="member" method="POST">
             <h1>显示会员</h1>
+            <%@ include file="logout.jsp"%>
             <table>
                 <tr>
                     <td>Id:</td>
