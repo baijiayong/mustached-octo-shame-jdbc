@@ -19,7 +19,7 @@ public class AuthLoginServlet extends HttpServlet
             logout(req, resp);
             return;
         }
-        if(null == memberId)
+        if(isNotLogin(req))
         {
             login(req,resp);
         }else
@@ -32,7 +32,7 @@ public class AuthLoginServlet extends HttpServlet
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String action = req.getParameter("action");
-    
+       
         if("login".equalsIgnoreCase(action)&&"admin".equals(username)&&"abc".equals(password))
         {
             HttpSession session = req.getSession();
@@ -42,7 +42,11 @@ public class AuthLoginServlet extends HttpServlet
         {
             showLoginFailed(req,resp);
         }
-        
+         if(isNotLogin(req))
+        {
+            login(req, resp);
+        }
+    
     }
     public void showLoginSuccess(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException
     {
@@ -57,10 +61,14 @@ public class AuthLoginServlet extends HttpServlet
         forward("showLoginPage",req,resp);
     }
     public void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-    {   
-        HttpSession session = req.getSession();
-        session.removeAttribute("memberId");
+    {  
+        req.getSession().removeAttribute("memberId");
         login(req,resp);
+    }
+    public boolean isNotLogin(HttpServletRequest req)
+    {
+        Long memberId = (Long)req.getSession().getAttribute("memberId");
+        return null == memberId;
     }
     public void forward(String page, HttpServletRequest req, HttpServletResponse resp)throws ServletException,IOException
     {
