@@ -13,7 +13,6 @@ public class AuthLoginServlet extends HttpServlet
     {
         HttpSession session = req.getSession();
         Long memberId = (Long)session.getAttribute("memberId");
-        
         if(null == memberId)
         {
             login(req,resp);
@@ -24,25 +23,26 @@ public class AuthLoginServlet extends HttpServlet
     {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+        String action = req.getParameter("action");
     
-        if("admin".equals(username)&&"abc".equals(password))
+        if("login".equalsIgnoreCase(action)&&"admin".equals(username)&&"abc".equals(password))
         {
             HttpSession session = req.getSession();
             session.setAttribute("memberId",1L);
-            showLoginSuccess();
+            showLoginSuccess(req,resp);
         }else
         {
-            showLoginFailed();
+            showLoginFailed(req,resp);
         }
         
     }
-    public void showLoginSuccess()
+    public void showLoginSuccess(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException
     {
-    
+        forward("showLoginSuccess", req, resp);
     }
-    public void showLoginFailed()
-    {
-        
+    public void showLoginFailed(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException
+    {   
+        forward("showLoginFailed", req, resp);
     }
     public void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException ,IOException
     {
