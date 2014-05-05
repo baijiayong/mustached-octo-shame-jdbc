@@ -21,7 +21,7 @@ public class AuthLoginServlet extends HttpServlet
         }
         if(isNotLogin(req))
         {
-            login(req,resp);
+            showLoginPage(req,resp);
         }else
         {
             resp.sendRedirect(req.getContextPath());
@@ -44,7 +44,7 @@ public class AuthLoginServlet extends HttpServlet
         }
          if(isNotLogin(req))
         {
-            login(req, resp);
+            showLoginPage(req, resp);
         }
     
     }
@@ -56,14 +56,14 @@ public class AuthLoginServlet extends HttpServlet
     {   
         forward("showLoginFailed", req, resp);
     }
-    public void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException ,IOException
+    public void showLoginPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException ,IOException
     {
         forward("showLoginPage",req,resp);
     }
     public void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {  
         req.getSession().removeAttribute("memberId");
-        login(req,resp);
+        showLoginPage(req,resp);
     }
     public boolean isNotLogin(HttpServletRequest req)
     {
