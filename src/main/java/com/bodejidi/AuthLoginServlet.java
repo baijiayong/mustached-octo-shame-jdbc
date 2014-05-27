@@ -10,10 +10,7 @@ import java.io.IOException;
 public class AuthLoginServlet extends HttpServlet
 {
     public void doGet(HttpServletRequest req,HttpServletResponse resp) throws ServletException,IOException
-    {
-        HttpSession session = req.getSession();
-        Long memberId = (Long)session.getAttribute("memberId");
-        
+    {   
         if(req.getRequestURI().endsWith("/logout"))
         {
             logout(req, resp);
@@ -29,6 +26,22 @@ public class AuthLoginServlet extends HttpServlet
     }
     public void doPost(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException
     {
+        login(req, resp);
+    }
+    public void showLoginSuccess(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException
+    {
+        forward("showLoginSuccess", req, resp);
+    }
+    public void showLoginFailed(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException
+    {   
+        forward("showLoginFailed", req, resp);
+    }
+    public void showLoginPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException ,IOException
+    {
+        forward("showLoginPage",req,resp);
+    }
+    public void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+    {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String action = req.getParameter("action");
@@ -42,23 +55,6 @@ public class AuthLoginServlet extends HttpServlet
         {
             showLoginFailed(req,resp);
         }
-         if(isNotLogin(req))
-        {
-            showLoginPage(req, resp);
-        }
-    
-    }
-    public void showLoginSuccess(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException
-    {
-        forward("showLoginSuccess", req, resp);
-    }
-    public void showLoginFailed(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException
-    {   
-        forward("showLoginFailed", req, resp);
-    }
-    public void showLoginPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException ,IOException
-    {
-        forward("showLoginPage",req,resp);
     }
     public void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {  
