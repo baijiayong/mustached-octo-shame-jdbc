@@ -35,4 +35,14 @@
         <servlet-name>auth</servlet-name>
         <url-pattern>/auth/logout</url-pattern>
     </servlet-mapping>
+    
+    <filter>
+        <filter-name>authorizationfilter</filter-name>
+        <filter-class>com.bodejidi.Authorization</filter-class>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>authorizationfilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>
