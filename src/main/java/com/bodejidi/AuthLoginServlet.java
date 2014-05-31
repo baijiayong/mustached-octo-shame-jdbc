@@ -16,11 +16,10 @@ public class AuthLoginServlet extends HttpServlet
             logout(req, resp);
             return;
         }
-        if(isNotLogin(req))
-        {
-            showLoginPage(req,resp);
-        }else
-        {
+        
+        if(isNotLogin(req)) {
+            showLoginPage(req, resp);
+        } else {
             resp.sendRedirect(req.getContextPath());
         }
     }
@@ -55,6 +54,9 @@ public class AuthLoginServlet extends HttpServlet
         {
             showLoginFailed(req,resp);
         }
+        if(isNotLogin(req)) {
+            showLoginPage(req, resp);
+        }
     }
     public void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {  
@@ -71,5 +73,4 @@ public class AuthLoginServlet extends HttpServlet
         String jsp = "/WEB-INF/member/" + page + ".jsp";
         getServletContext().getRequestDispatcher(jsp).forward(req,resp);
     }
-    
 }      
