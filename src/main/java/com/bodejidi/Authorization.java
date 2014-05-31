@@ -29,15 +29,15 @@ public class Authorization implements Filter
     }
     public void destroy()
     {
-    
+        //ignore;
     }
     public boolean isNotAuthUrl(HttpServletRequest req)
-    {
+    { 
         return ! req.getRequestURI().startsWith(req.getContextPath() + "/auth/");
     }
     public boolean isNotLogin(HttpServletRequest req) throws IOException, ServletException
     {
-        Long memberId = (Long)req.getSession().getAttribute("memberID");
+        Long memberId = (Long)req.getSession().getAttribute("memberId");
         return null == memberId;
     }
 }
