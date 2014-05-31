@@ -17,9 +17,9 @@ public class Project extends HttpServlet
         
         if ("list".equalsIgnoreCase(action))
         {
-           MemberDao memberDao = new MemberDao();
-           req.setAttribute("memberList",memberDao.list());
-           forward("list",req,resp);
+            MemberDao memberDao = new MemberDao();
+            req.setAttribute("memberList",memberDao.list());
+            forward("list",req,resp);
         }else if ("show".equalsIgnoreCase(action))
         {
             Long id = Long.valueOf(req.getParameter("id"));
@@ -28,6 +28,9 @@ public class Project extends HttpServlet
             MemberDao memberDao = new MemberDao();
             req.setAttribute("member",memberDao.show(member));
             forward("show",req,resp);
+        }else if("create".equalsIgnoreCase(action))
+        {
+            forward("create",req,resp);
         }
     }
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException
